@@ -17,9 +17,10 @@ pipeline {
                 SONARQUBE_URL= "http://localhost:9000"   
             }
             steps {
-                withCredentials([string(CredentialsID:'jenkins',Variables:'SONARQUBE_AUTH_TOKEN')])
+                withCredentials([string(CredentialsID:'jenkins',Variables:'SONARQUBE_AUTH_TOKEN')]) {
                 sh 'cd spring-boot-java/spring-boot-app && mvn sonar:sonar -Dsonar.login=$SONARQUBE_AUTH_TOKEN -Dsonar.host.url=$SONARQUBE_URL'
-            }
+              }
+           }
         }
     }
 }
