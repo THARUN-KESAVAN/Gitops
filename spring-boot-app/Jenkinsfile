@@ -14,7 +14,7 @@ pipeline {
         }
         stage('sonar qube ') {
             environment {
-                SONARQUBE_URL=http://localhost:9000/   
+                SONARQUBE_URL= "http://localhost:9000"   
             }
             steps {
                 withCredentials([string(CredentialsID:'jenkins',Variables:'SONARQUBE_AUTH_TOKEN')])
