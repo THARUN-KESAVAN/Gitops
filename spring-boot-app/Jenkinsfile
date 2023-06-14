@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh cd spring-boot-java/spring-boot-app && mvn clean package
+                sh 'cd spring-boot-app && mvn clean package'
             }
         }
         stage('sonar qube ') {
@@ -18,7 +18,7 @@ pipeline {
             }
             steps {
                 withCredentials([string(CredentialsID:'jenkins',Variables:'SONARQUBE_AUTH_TOKEN')])
-                sh cd spring-boot-java/spring-boot-app && mvn sonar:sonar -Dsonar.login=$SONARQUBE_AUTH_TOKEN -Dsonar.host.url=$SONARQUBE_URL
+                sh 'cd spring-boot-java/spring-boot-app && mvn sonar:sonar -Dsonar.login=$SONARQUBE_AUTH_TOKEN -Dsonar.host.url=$SONARQUBE_URL'
             }
         }
     }
